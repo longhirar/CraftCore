@@ -13,6 +13,7 @@ namespace CraftCore.ProtocolUtils.Packets
         public byte[] ToBytes() {
             using (var stream = new MemoryStream())
             {
+                VarInt.WriteVarInt(stream, (int)PacketType.S2C_Login);
                 Integer.WriteInt(stream, player.ID);
                 stream.WriteByte(0x00); // IsHardcore
                 VarInt.WriteVarInt(stream, 1); // dimension array size

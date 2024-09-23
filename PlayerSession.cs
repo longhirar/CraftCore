@@ -213,8 +213,12 @@ namespace CraftCore
                     //S2C_SpawnEntity spawnPlayer = new S2C_SpawnEntity { entity = player };
                     //stream.Write(spawnPlayer.ToBytes());
 
+                    S2C_BundleDelimiter delimiter = new S2C_BundleDelimiter();
+
+                    stream.Write(delimiter.ToBytes());
                     S2C_Login loginPlayer = new S2C_Login { player = player };
                     stream.Write(loginPlayer.ToBytes());
+                    stream.Write(delimiter.ToBytes());
                     break;
                 default:
                     break;
