@@ -1,0 +1,30 @@
+﻿
+#
+# CraftCore
+# by Rafael Longhi
+#
+# Licensed under the MIT License
+#
+
+CraftCore:
+
+    
+    Host: "127.0.0.1"
+    Port: 25565
+
+    MaxPlayers: 100
+    # StatusMessage is shown to the user when they see the server on the server list.
+    # You can choose colors using the § symbol.
+    # You can see all the different colors and effects here: https://minecraft.wiki/w/Formatting_codes#Color_codes
+    StatusMessage: "§aA CraftCore Minecraft Server"
+    # Path for the image file containing the icon that appears on the server list.
+    # This HAS to be a 64x64 PNG image.
+    # This path is relative to the CraftCore.exe file.
+    Favicon: core.png
+    # LogLevel chooses which information should be logged:
+    # 0 = NO logs (Silent Mode) (NOT RECOMMENDED)
+    # 1 = Only Errors
+    # 2 = Errors and Warnings
+    # 3 = Errors, Warnings and Information
+    # 4 = Debug
+    LogLevel: 4
