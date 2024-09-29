@@ -7,6 +7,8 @@ using System.Text;
 using CraftCore.Entities;
 using CraftCore.ProtocolUtils;
 using CraftCore.ProtocolUtils.Packets;
+using CraftCore.Registries;
+using CraftCore.World;
 
 namespace CraftCore
 {
@@ -16,6 +18,8 @@ namespace CraftCore
         private NetworkStream stream;
         private ProtocolState state;
         private bool shouldDisconnect = false;
+
+        public Registry<Dimension> dimensions;
 
         public string? Username { get; private set; }
         public Guid? UUID { get; private set; }
@@ -188,6 +192,21 @@ namespace CraftCore
                         informationPacket.SkinParts,
                         informationPacket.MainHand
                     );
+
+                    Config_S2C_KnownPacks sendKnownPacks = new Config_S2C_KnownPacks([ 
+                        new DataPack("minecraft:core", "0", "1.21") 
+                    ]);
+                    stream.Write(sendKnownPacks.ToBytes());
+
+                    
+                    break;
+                case PacketTypeConfig.Config_C2S_KnownPacks:
+                    Config_C2S_KnownPacks recKnownPacks = (Config_C2S_KnownPacks)genericPacket;
+                    Log.Write("Known Packs: ", LogChannel.DEBUG);
+                    foreach (var pack in recKnownPacks.packs)
+                    {
+                        Log.Write($"{pack.Namespace}, {pack.ID}, {pack.Version}", LogChannel.DEBUG);
+                    }
 
                     Config_S2C_FinishConfig finishPacket = new Config_S2C_FinishConfig();
                     stream.Write(finishPacket.ToBytes());

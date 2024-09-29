@@ -13,9 +13,10 @@ namespace CraftCore.Entities
     {
         public float AdditionalHearts = 0;
         public int Score = 0;
-        public string Username = "Player";
-        public byte SkinParts = 0;
-        public ClientMainHand MainHand = ClientMainHand.Right;
+        public string Username;
+        public byte SkinParts;
+        public ClientMainHand MainHand;
+
 
         public Player(int iD, Guid uUID, Vector3 position, string username, byte skinParts, ClientMainHand mainHand) : base(iD, uUID, EntityType.Player, position )
         {

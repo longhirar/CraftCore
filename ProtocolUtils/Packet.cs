@@ -101,6 +101,8 @@ namespace CraftCore.ProtocolUtils
                     return new Config_C2S_Plugin(buffer, offset, length);
                 case PacketTypeConfig.Config_C2S_Information:
                     return new Config_C2S_Information(buffer, offset);
+                case PacketTypeConfig.Config_C2S_KnownPacks:
+                    return new Config_C2S_KnownPacks(buffer, offset);
                 case PacketTypeConfig.Config_C2S_FinishConfigAck:
                     return new Config_C2S_FinishConfigAck();
                 default:

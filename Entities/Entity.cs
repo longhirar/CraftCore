@@ -35,7 +35,7 @@ namespace CraftCore.Entities
 
     public abstract class Entity
     {
-        public int ID { get; private set; }
+        public int ID { get; set; }
         public Guid UUID { get; private set; }
         public EntityType Type {  get; private set; }
         public Vector3 Position { get; set; }
